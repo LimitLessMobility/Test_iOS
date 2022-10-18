@@ -16,7 +16,7 @@ steps:
     scheme: ''
     sdk: 'iphoneos'
     configuration: 'Release'
-    xcWorkspacePath: '**/*.xcodeproj/project.xcworkspace'
+    xcWorkspacePath: ''
     xcodeVersion: 'default' # Options: 8, 9, 10, 11, 12, default, specifyPath
 
 - task: CopyFiles@2
