@@ -10,6 +10,19 @@ pool:
   vmImage: 'macos-latest'
 
 steps:
+
+# Install Apple certificate
+# Install an Apple certificate required to build on a macOS agent machine
+- task: InstallAppleCertificate@2
+  inputs:
+    certSecureFile: 'testCertificate.p12'
+    certPwd: '12345678'
+    #keychain: 'temp' # Options: default, temp, custom
+    #keychainPassword: # Required when keychain == Custom || Keychain == Default
+    #customKeychainPath: # Required when keychain == Custom
+    #deleteCert: # Optional
+    #deleteCustomKeychain: # Optional
+    #signingIdentity: # Optional
 - task: Xcode@5
   inputs:
     actions: 'build'
@@ -18,6 +31,7 @@ steps:
     configuration: 'Release'
     xcWorkspacePath: '**/*.xcodeproj/project.xcworkspace'
     xcodeVersion: 'default' # Options: 8, 9, 10, 11, 12, default, specifyPath
+    exportTeamId: "W7R7MDY44S"
     packageApp: true
 
 - task: CopyFiles@2
